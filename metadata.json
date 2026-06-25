@@ -1,0 +1,6 @@
+{
+  "name": "Mirra Export Trading PLC",
+  "description": "Premium Ethiopian Chilled Meat Exporter, delivering safe, fresh, and high-quality chilled meat products meeting strict international standards from our farms to your table.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
