@@ -12,6 +12,7 @@ import {
   Phone, 
   CheckCircle2, 
   ChevronRight, 
+  ChevronLeft,
   ArrowRight, 
   Menu, 
   X, 
@@ -54,6 +55,15 @@ export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [productCategory, setProductCategory] = useState<'all' | 'cattle' | 'goats' | 'sheep'>('all');
   const [scrolled, setScrolled] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play slider effect (every 8 seconds)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 8000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -215,6 +225,7 @@ export default function Home() {
       badge: "High Demand",
       desc: "Widely recognized across the Middle East for exceptional meat quality, remarkable muscle structure, and optimal fat distribution. Raised entirely on natural, mineral-rich pastures.",
       weight: "350 - 450 kg live weight",
+      image: "/images/premium_beef_steak.jpg",
       features: ["Fine marbling", "Outstanding tenderness", "100% grass-fed beef"]
     },
     {
@@ -225,6 +236,7 @@ export default function Home() {
       badge: "Premium Grass-Fed",
       desc: "Revered for healthy growth, massive body structure, and lean meat. Sourced from water-rich plains, ensuring cattle develop robust health and clean, high-nutrition beef products.",
       weight: "400 - 500 kg live weight",
+      image: "/images/premium_beef_steak.jpg",
       features: ["Highly nutritious lean beef", "Naturally raised", "Superb moisture retention"]
     },
     {
@@ -235,6 +247,7 @@ export default function Home() {
       badge: "Export Grade",
       desc: "Highly valued for superior meat-to-bone ratio and premium meat flavor. Sourced from robust herds in southern plains, adapting them beautifully for top-tier international markets.",
       weight: "30 - 45 kg live weight",
+      image: "/images/premium_lamb_chops.jpg",
       features: ["Delicate texture", "Rich flavor profile", "Strictly veterinary-approved"]
     },
     {
@@ -245,6 +258,7 @@ export default function Home() {
       badge: "Lean & Healthy",
       desc: "Sourced from high-altitude alpine regions. These goats browse on natural, diverse mountain shrubs, giving their meat a highly distinctive, aromatic, and low-fat premium profile.",
       weight: "25 - 38 kg live weight",
+      image: "/images/premium_lamb_chops.jpg",
       features: ["Exceptionally lean meat", "Aromatic grazing flavor", "High protein, low cholesterol"]
     },
     {
@@ -255,6 +269,7 @@ export default function Home() {
       badge: "Best Seller",
       desc: "The absolute pride of Ethiopian mutton export. Adapted beautifully to highland climates, developing a highly preferred layer of premium sweet fat and tender meat.",
       weight: "28 - 40 kg live weight",
+      image: "/images/premium_lamb_chops.jpg",
       features: ["Sweet fat cover", "Distinctive juicy texture", "Highly sought-after in Gulf states"]
     },
     {
@@ -265,6 +280,7 @@ export default function Home() {
       badge: "High Yield",
       desc: "Sought-after for its exceptional meat yield, tender muscle fibers, and ideal fat-to-meat ratio. Sourced from expert sheep breeders adhering to organic feeding patterns.",
       weight: "30 - 42 kg live weight",
+      image: "/images/premium_lamb_chops.jpg",
       features: ["Perfect meat-to-bone ratio", "High moisture retention", "Uniform carcasses"]
     }
   ];
@@ -407,13 +423,76 @@ export default function Home() {
                   Contact
                 </a>
                 <div className="pt-3 border-t border-amber-600/20">
-                  <a 
-                    href="#contact" 
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block text-center w-full bg-amber-600 hover:bg-amber-500 text-white font-bold uppercase tracking-widest py-3 rounded-sm text-[11px]"
-                  >
-                    Get a Quote / Contact Us
-                  </a>
+                  <div className="text-[10px] text-emerald-200/50 uppercase tracking-widest font-black text-center mb-3">
+                    Connect With Us
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <a 
+                      href="https://facebook.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="Facebook"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Facebook className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://instagram.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="Instagram"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white hover:border-transparent transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Instagram className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://twitter.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="Twitter (X)"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Twitter className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://linkedin.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="LinkedIn"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://youtube.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="YouTube"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#ff0000] hover:text-white hover:border-[#ff0000] transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Youtube className="w-4 h-4" />
+                    </a>
+                    <a 
+                      href="https://telegram.org" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="Telegram"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#24a1de] hover:text-white hover:border-[#24a1de] transition-all flex items-center justify-center shadow-none"
+                    >
+                      <Send className="w-4 h-4 -rotate-45 -translate-x-0.5" />
+                    </a>
+                    <a 
+                      href="https://tiktok.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="TikTok"
+                      className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center shadow-none"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31.01 2.61-.01 3.91.02.08 1.53.63 3.02 1.59 4.23.83.99 1.95 1.7 3.2 2.05.01 1.25.01 2.5 0 3.75-1.16-.16-2.27-.67-3.17-1.42a8.55 8.55 0 0 1-1.53-1.67V15a8.12 8.12 0 0 1-8.13 8.13 8.12 8.12 0 0 1-8.13-8.13A8.12 8.12 0 0 1 12 6.89c.01 1.43-.02 2.87.01 4.3a3.81 3.81 0 0 0-3.81 3.81 3.81 3.81 0 0 0 3.81 3.81 3.81 3.81 0 0 0 3.81-3.81V0c-1.1-.01-2.2.02-3.3-.01v.03z"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -421,116 +500,332 @@ export default function Home() {
         </AnimatePresence>
       </header>
 
-      {/* 2. HERO SECTION */}
+      {/* 2. HERO SECTION (3-Slide Professional Interactive Slider) */}
       <section 
         id="hero-section"
-        className="relative min-h-[92vh] flex items-center justify-center bg-emerald-950 text-white pt-24 overflow-hidden"
+        className="relative min-h-[92vh] flex items-center justify-center bg-emerald-950 text-white pt-24 overflow-hidden select-none"
       >
         {/* Geometric Grid dots background */}
-        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0id2hpdGUiLz48L3N2Zz4=')]"></div>
+        <div className="absolute inset-0 z-10 opacity-15 pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0id2hpdGUiLz48L3N2Zz4=')]"></div>
 
-        {/* Background Image overlay */}
+        {/* Slides Content Container */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/ethiopian_highlands_pasture.jpg" 
-            alt="Ethiopian Highlands Pasture" 
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover opacity-25 scale-100"
-          />
-          {/* High contrast structural gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/90 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+          <AnimatePresence mode="wait">
+            {currentSlide === 0 ? (
+              <motion.div
+                key="slide-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src="/images/ethiopian_highlands_pasture.jpg" 
+                  alt="Ethiopian Highlands Pasture" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover opacity-25 scale-100 transition-transform duration-10000 ease-out"
+                />
+                {/* High contrast structural gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/90 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+              </motion.div>
+            ) : currentSlide === 1 ? (
+              <motion.div
+                key="slide-1"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 bg-emerald-950/40"
+              >
+                <img 
+                  src="/images/premium_beef_steak.jpg" 
+                  alt="Premium Grass-Fed Beef" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover opacity-30 scale-100 transition-transform duration-10000 ease-out"
+                />
+                {/* High contrast structural gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/95 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="slide-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 bg-emerald-950/40"
+              >
+                <img 
+                  src="/images/premium_lamb_chops.jpg" 
+                  alt="Premium Export Mutton & Sheep" 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover opacity-30 scale-100 transition-transform duration-10000 ease-out"
+                />
+                {/* High contrast structural gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/95 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-7 space-y-6">
+        {/* Slider Controls */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-20 px-4 md:px-8 flex justify-between pointer-events-none">
+          <button 
+            onClick={() => setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1))}
+            className="w-10 h-10 rounded-full border border-white/10 hover:border-amber-500 bg-emerald-950/40 hover:bg-amber-600 hover:text-white transition-all flex items-center justify-center text-white/70 backdrop-blur-sm pointer-events-auto shadow-lg"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={() => setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1))}
+            className="w-10 h-10 rounded-full border border-white/10 hover:border-amber-500 bg-emerald-950/40 hover:bg-amber-600 hover:text-white transition-all flex items-center justify-center text-white/70 backdrop-blur-sm pointer-events-auto shadow-lg"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Slide Bullets */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3 bg-emerald-950/40 px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm">
+          <button 
+            onClick={() => setCurrentSlide(0)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === 0 ? 'bg-amber-500 w-6' : 'bg-white/40 hover:bg-white/80'}`}
+            aria-label="Go to Slide 1"
+          />
+          <button 
+            onClick={() => setCurrentSlide(1)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === 1 ? 'bg-amber-500 w-6' : 'bg-white/40 hover:bg-white/80'}`}
+            aria-label="Go to Slide 2"
+          />
+          <button 
+            onClick={() => setCurrentSlide(2)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === 2 ? 'bg-amber-500 w-6' : 'bg-white/40 hover:bg-white/80'}`}
+            aria-label="Go to Slide 3"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full">
+          <AnimatePresence mode="wait">
+            {currentSlide === 0 ? (
               <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
+                key="content-0"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.6 }}
-                className="inline-block px-3 py-1 bg-red-800 text-[10px] font-bold uppercase tracking-[0.3em] mb-2 rounded-sm text-white"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
               >
-                Ethiopian Premier Grade
-              </motion.div>
-
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-4xl sm:text-5xl md:text-6.5xl font-display font-black leading-[1.05] tracking-tight text-white uppercase"
-              >
-                Premium Chilled <br className="hidden sm:inline" />
-                <span className="text-amber-400">Meat Export</span>
-              </motion.h1>
-
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-sm sm:text-base text-emerald-100/80 max-w-xl font-light leading-relaxed italic"
-              >
-                &ldquo;Safe, fresh, and world-class livestock products from the lush highlands of Ethiopia to your global table.&rdquo;
-              </motion.p>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4"
-              >
-                <a 
-                  href="#products" 
-                  className="px-6 py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors flex items-center justify-center space-x-2 group"
-                >
-                  <span>Explore Our Products</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a 
-                  href="#process" 
-                  className="px-6 py-3.5 bg-transparent hover:bg-white/10 border border-white/20 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors text-center"
-                >
-                  Our Process
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Desktop side graphic/visual element */}
-            <div className="hidden lg:block lg:col-span-5">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative bg-emerald-900/60 p-8 rounded-sm border-l-4 border-amber-500 shadow-xl overflow-hidden backdrop-blur-sm"
-              >
-                {/* Visual Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl"></div>
-
-                <div className="relative z-10 space-y-6">
-                  <div className="w-10 h-10 rounded-sm bg-amber-500/20 flex items-center justify-center text-amber-400 border border-amber-500/30">
-                    <Thermometer className="w-5 h-5" />
+                
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="inline-block px-3 py-1 bg-red-800 text-[10px] font-bold uppercase tracking-[0.3em] mb-2 rounded-sm text-white">
+                    Ethiopian Premier Grade
                   </div>
-                  <h3 className="font-display font-black text-xs uppercase tracking-widest text-white border-b border-white/10 pb-3">Chilled Freshness Flow</h3>
-                  <p className="text-xs text-emerald-100/70 leading-relaxed font-light">
-                    Our high-end logistics system guarantees a flawless temperature margin between <strong className="text-amber-400">0°C to 4°C</strong> from pasture sourcing through flight transport, preserving prime taste and absolute sanitary hygiene.
+
+                  <h1 className="text-4xl sm:text-5xl md:text-6.5xl font-display font-black leading-[1.05] tracking-tight text-white uppercase">
+                    Premium Chilled <br className="hidden sm:inline" />
+                    <span className="text-amber-400">Meat Export</span>
+                  </h1>
+
+                  <p className="text-sm sm:text-base text-emerald-100/80 max-w-xl font-light leading-relaxed">
+                    &ldquo;Safe, fresh, and world-class livestock products from the lush highlands of Ethiopia to your global table.&rdquo; Sourced with deep care, verified under rigid veterinary health certifications, and certified 100% Halal.
                   </p>
-                  
-                  <div className="pt-2 space-y-3">
-                    <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
-                      <Check className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span className="font-medium">Sourced from Borena & Highlands</span>
-                    </div>
-                    <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
-                      <Check className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span className="font-medium">100% Halal Certified Slaughtering</span>
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                    <a 
+                      href="#products" 
+                      className="px-6 py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors flex items-center justify-center space-x-2 group"
+                    >
+                      <span>Explore Our Products</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a 
+                      href="#process" 
+                      className="px-6 py-3.5 bg-transparent hover:bg-white/10 border border-white/20 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors text-center"
+                    >
+                      Our Process
+                    </a>
+                  </div>
+                </div>
+
+                {/* Desktop side graphic/visual element */}
+                <div className="hidden lg:block lg:col-span-5">
+                  <div className="relative bg-emerald-900/60 p-8 rounded-sm border-l-4 border-amber-500 shadow-xl overflow-hidden backdrop-blur-sm">
+                    {/* Visual Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl"></div>
+
+                    <div className="relative z-10 space-y-6">
+                      <div className="w-10 h-10 rounded-sm bg-amber-500/20 flex items-center justify-center text-amber-400 border border-amber-500/30">
+                        <Thermometer className="w-5 h-5" />
+                      </div>
+                      <h3 className="font-display font-black text-xs uppercase tracking-widest text-white border-b border-white/10 pb-3">Chilled Freshness Flow</h3>
+                      <p className="text-xs text-emerald-100/70 leading-relaxed font-light">
+                        Our high-end logistics system guarantees a flawless temperature margin between <strong className="text-amber-400">0°C to 4°C</strong> from pasture sourcing through flight transport, preserving prime taste and absolute sanitary hygiene.
+                      </p>
+                      
+                      <div className="pt-2 space-y-3">
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">Sourced from Borena & Highlands</span>
+                        </div>
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">100% Halal Certified Slaughtering</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </div>
 
-          </div>
+              </motion.div>
+            ) : currentSlide === 1 ? (
+              <motion.div 
+                key="content-1"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+              >
+                
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="inline-block px-3 py-1 bg-amber-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-2 rounded-sm text-emerald-950">
+                    Uninterrupted Cold Logistics
+                  </div>
+
+                  <h1 className="text-4xl sm:text-5xl md:text-6.5xl font-display font-black leading-[1.05] tracking-tight text-white uppercase">
+                    Unbroken Cold <br className="hidden sm:inline" />
+                    <span className="text-amber-400">Chain Delivery</span>
+                  </h1>
+
+                  <p className="text-sm sm:text-base text-emerald-100/80 max-w-xl font-light leading-relaxed">
+                    Our state-of-the-art logistics pipeline ensures temperature-controlled dispatch from ISO-certified processing facilities directly to target global airport terminals within 24 to 48 hours, locking in supreme freshness.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                    <a 
+                      href="#contact" 
+                      className="px-6 py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors flex items-center justify-center space-x-2 group"
+                    >
+                      <span>Get Export Quote</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a 
+                      href="#markets" 
+                      className="px-6 py-3.5 bg-transparent hover:bg-white/10 border border-white/20 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors text-center"
+                    >
+                      Our Markets
+                    </a>
+                  </div>
+                </div>
+
+                {/* Desktop side graphic/visual element */}
+                <div className="hidden lg:block lg:col-span-5">
+                  <div className="relative bg-emerald-900/60 p-8 rounded-sm border-l-4 border-amber-500 shadow-xl overflow-hidden backdrop-blur-sm">
+                    {/* Visual Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl"></div>
+
+                    <div className="relative z-10 space-y-6">
+                      <div className="w-10 h-10 rounded-sm bg-amber-500/20 flex items-center justify-center text-amber-400 border border-amber-500/30">
+                        <Truck className="w-5 h-5" />
+                      </div>
+                      <h3 className="font-display font-black text-xs uppercase tracking-widest text-white border-b border-white/10 pb-3">24-48h Global Speed</h3>
+                      <p className="text-xs text-emerald-100/70 leading-relaxed font-light">
+                        Carcasses are instantly blast-chilled, vacuum-sealed under strict hygiene codes, and loaded into automated climate-tracked reefers to ensure zero thermal fluctuation before boarding cargo flights.
+                      </p>
+                      
+                      <div className="pt-2 space-y-3">
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">Unbroken Cold Chain &lt; 4°C</span>
+                        </div>
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">Direct Flights to Saudi Arabia & Jordan</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="content-2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+              >
+                
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="inline-block px-3 py-1 bg-amber-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-2 rounded-sm text-emerald-950">
+                    Sourcing Sincerity
+                  </div>
+
+                  <h1 className="text-4xl sm:text-5xl md:text-6.5xl font-display font-black leading-[1.05] tracking-tight text-white uppercase">
+                    Ethical Grazing <br className="hidden sm:inline" />
+                    <span className="text-amber-400">&amp; 100% Halal</span>
+                  </h1>
+
+                  <p className="text-sm sm:text-base text-emerald-100/80 max-w-xl font-light leading-relaxed">
+                    Our premium livestock browse freely in the chemical-free pastures of the Borena Basin and high plains. All processing is hand-slaughtered by certified practitioners in absolute compliance with strict Halal and ISO 22000 rules.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                    <a 
+                      href="#quality" 
+                      className="px-6 py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors flex items-center justify-center space-x-2 group"
+                    >
+                      <span>Quality &amp; Standards</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                    <a 
+                      href="#about" 
+                      className="px-6 py-3.5 bg-transparent hover:bg-white/10 border border-white/20 text-white font-bold rounded-sm text-xs uppercase tracking-widest transition-colors text-center"
+                    >
+                      About Our Mission
+                    </a>
+                  </div>
+                </div>
+
+                {/* Desktop side graphic/visual element */}
+                <div className="hidden lg:block lg:col-span-5">
+                  <div className="relative bg-emerald-900/60 p-8 rounded-sm border-l-4 border-amber-500 shadow-xl overflow-hidden backdrop-blur-sm">
+                    {/* Visual Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl"></div>
+
+                    <div className="relative z-10 space-y-6">
+                      <div className="w-10 h-10 rounded-sm bg-amber-500/20 flex items-center justify-center text-amber-400 border border-amber-500/30">
+                        <Award className="w-5 h-5" />
+                      </div>
+                      <h3 className="font-display font-black text-xs uppercase tracking-widest text-white border-b border-white/10 pb-3">Traceable & Pure</h3>
+                      <p className="text-xs text-emerald-100/70 leading-relaxed font-light">
+                        Every export batch is fully vetted by veterinary officers and verified with official animal health certificates from the Ministry of Agriculture, ensuring total safety confidence.
+                      </p>
+                      
+                      <div className="pt-2 space-y-3">
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">100% Free-Range Sourced Livestock</span>
+                        </div>
+                        <div className="flex items-center space-x-2.5 text-xs text-emerald-100">
+                          <Check className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-medium">Accredited Halal Export Facilities</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Key Trust Badges Grid */}
           <div className="mt-16 pt-12 border-t border-white/10">
@@ -586,7 +881,7 @@ export default function Home() {
       </section>
 
       {/* 3. ABOUT US SECTION */}
-      <section id="about" className="py-20 bg-slate-50 border-b border-slate-200">
+      <section id="about" className="py-20 bg-[#fbf9f4] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -667,7 +962,7 @@ export default function Home() {
       </section>
 
       {/* 4. OUR PRODUCTION & EXPORT PROCESS */}
-      <section id="process" className="py-20 bg-white border-b border-slate-200">
+      <section id="process" className="py-20 bg-[#fdfcf9] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
@@ -827,7 +1122,7 @@ export default function Home() {
       </section>
 
       {/* 5. OUR PRODUCTS SECTION */}
-      <section id="products" className="py-20 bg-slate-50 border-b border-slate-200">
+      <section id="products" className="py-20 bg-[#fbf9f4] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -876,6 +1171,17 @@ export default function Home() {
                   className="bg-white rounded-sm border border-slate-200 shadow-none overflow-hidden hover:border-amber-500 transition-all flex flex-col justify-between h-full group"
                 >
                   <div>
+                    {/* Product Image */}
+                    <div className="relative h-48 w-full overflow-hidden bg-slate-100 border-b border-slate-100">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 to-transparent"></div>
+                    </div>
+
                     {/* Top graphic accent representing fresh pastoral meat */}
                     <div className="h-1 bg-gradient-to-r from-emerald-900 via-amber-500 to-red-800"></div>
 
@@ -959,7 +1265,7 @@ export default function Home() {
       </section>
 
       {/* 6. QUALITY ASSURANCE SECTION */}
-      <section id="quality" className="py-20 bg-white border-b border-slate-200">
+      <section id="quality" className="py-20 bg-[#fdfcf9] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
@@ -1253,7 +1559,7 @@ export default function Home() {
       </section>
 
       {/* 8. CONTACT & FOOTER (With local inquiries history tracker) */}
-      <section id="contact" className="py-20 bg-slate-50 border-b border-slate-200">
+      <section id="contact" className="py-20 bg-[#fbf9f4] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -1321,6 +1627,38 @@ export default function Home() {
                 </div>
 
               </div>
+
+              {/* Company HQ Location Map */}
+              <div className="border border-slate-200 p-6 bg-white rounded-sm shadow-none space-y-4">
+                <div className="space-y-1">
+                  <span className="text-[9px] uppercase tracking-widest font-black text-amber-600">Global Headquarters</span>
+                  <h3 className="font-display font-black text-base uppercase tracking-tight text-slate-900">
+                    Our Location
+                  </h3>
+                  <p className="text-[11px] text-slate-500 leading-relaxed font-light">
+                    Visit our export division headquarters located in the central trade hub of Addis Ababa.
+                  </p>
+                </div>
+                
+                <div className="relative w-full h-[240px] rounded-sm overflow-hidden bg-slate-100 border border-slate-150">
+                  <iframe 
+                    title="Mirra Export Trading PLC Headquarters Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.548769396347!2d38.78345!3d9.0142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x84683c6db5a2d61a!2sBole%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1719400000000!5m2!1sen!2sus"
+                    className="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-500"
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  ></iframe>
+                </div>
+                
+                <div className="flex items-center space-x-2 py-2 px-3 bg-slate-50 border border-slate-100 rounded-sm">
+                  <MapPin className="w-4 h-4 text-red-700 shrink-0" />
+                  <span className="text-[10px] uppercase tracking-wider font-black text-slate-600">
+                    Bole Sub-City, Addis Ababa, Ethiopia
+                  </span>
+                </div>
+              </div>
+
             </div>
 
             {/* Right Contact Form Panel */}
@@ -1609,7 +1947,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="Facebook"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] transition-all flex items-center justify-center shadow-none"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -1618,7 +1956,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="Instagram"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white hover:border-transparent transition-all flex items-center justify-center shadow-none"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -1627,7 +1965,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="Twitter (X)"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center shadow-none"
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
@@ -1636,7 +1974,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="LinkedIn"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all flex items-center justify-center shadow-none"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -1645,7 +1983,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="YouTube"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#ff0000] hover:text-white hover:border-[#ff0000] transition-all flex items-center justify-center shadow-none"
                 >
                   <Youtube className="w-4 h-4" />
                 </a>
@@ -1654,7 +1992,7 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="Telegram"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-[#24a1de] hover:text-white hover:border-[#24a1de] transition-all flex items-center justify-center shadow-none"
                 >
                   <Send className="w-4 h-4 -rotate-45 -translate-x-0.5" />
                 </a>
@@ -1663,9 +2001,11 @@ export default function Home() {
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="TikTok"
-                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-amber-500 hover:text-emerald-950 transition-colors flex items-center justify-center shadow-none font-black text-xs"
+                  className="w-8 h-8 rounded-sm bg-emerald-900 border border-white/5 text-emerald-100 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center shadow-none"
                 >
-                  <span>D</span>
+                  <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31.01 2.61-.01 3.91.02.08 1.53.63 3.02 1.59 4.23.83.99 1.95 1.7 3.2 2.05.01 1.25.01 2.5 0 3.75-1.16-.16-2.27-.67-3.17-1.42a8.55 8.55 0 0 1-1.53-1.67V15a8.12 8.12 0 0 1-8.13 8.13 8.12 8.12 0 0 1-8.13-8.13A8.12 8.12 0 0 1 12 6.89c.01 1.43-.02 2.87.01 4.3a3.81 3.81 0 0 0-3.81 3.81 3.81 3.81 0 0 0 3.81 3.81 3.81 3.81 0 0 0 3.81-3.81V0c-1.1-.01-2.2.02-3.3-.01v.03z"/>
+                  </svg>
                 </a>
               </div>
             </div>
