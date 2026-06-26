@@ -524,11 +524,11 @@ export default function Home() {
                   src="/images/ethiopian_highlands_pasture.jpg" 
                   alt="Ethiopian Highlands Pasture" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover opacity-25 scale-100 transition-transform duration-10000 ease-out"
+                  className="w-full h-full object-cover opacity-80 scale-100 transition-transform duration-10000 ease-out"
                 />
-                {/* High contrast structural gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/90 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                {/* Soft green gradient on left, clear on right */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/75 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent"></div>
               </motion.div>
             ) : currentSlide === 1 ? (
               <motion.div
@@ -537,17 +537,17 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
-                className="absolute inset-0 bg-emerald-950/40"
+                className="absolute inset-0"
               >
                 <img 
                   src="/images/premium_beef_steak.jpg" 
                   alt="Premium Grass-Fed Beef" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover opacity-30 scale-100 transition-transform duration-10000 ease-out"
+                  className="w-full h-full object-cover opacity-80 scale-100 transition-transform duration-10000 ease-out"
                 />
-                {/* High contrast structural gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/95 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                {/* Soft green gradient on left, clear on right */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/75 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent"></div>
               </motion.div>
             ) : (
               <motion.div
@@ -556,17 +556,17 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
-                className="absolute inset-0 bg-emerald-950/40"
+                className="absolute inset-0"
               >
                 <img 
                   src="/images/premium_lamb_chops.jpg" 
                   alt="Premium Export Mutton & Sheep" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover opacity-30 scale-100 transition-transform duration-10000 ease-out"
+                  className="w-full h-full object-cover opacity-80 scale-100 transition-transform duration-10000 ease-out"
                 />
-                {/* High contrast structural gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/95 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                {/* Soft green gradient on left, clear on right */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/75 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent"></div>
               </motion.div>
             )}
           </AnimatePresence>
